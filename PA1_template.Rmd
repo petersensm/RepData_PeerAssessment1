@@ -45,7 +45,9 @@ by_day <- group_by(activity, date)
 steps_by_day <- summarize(by_day,
     steps = sum(steps))
 
-ggplot(steps_by_day, aes(x = steps)) + geom_histogram() + xlab("Total steps per day") + ylab("Count of days")
+hist <- ggplot(steps_by_day, aes(x = steps)) + geom_histogram() + xlab("Total steps per day") + ylab("Count of days")
+
+hist
 ```
 
 2. Calculate and report the mean and median total number of steps taken per day  
@@ -63,7 +65,9 @@ by_interval <- group_by(activity, interval)
 steps_by_interval <- summarize(by_interval,
     steps = mean(steps, na.rm=TRUE))
 
-ggplot(steps_by_interval, aes(y = steps, x = interval)) + geom_line() + xlab("5 min interval") + ylab("Average steps")
+daily <- ggplot(steps_by_interval, aes(y = steps, x = interval)) + geom_line() + xlab("5 min interval") + ylab("Average steps")
+
+daily
 ```
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?  
@@ -101,7 +105,9 @@ by_day_nona <- group_by(activity2, date)
 steps_by_day_nona <- summarize(by_day_nona,
     steps = sum(steps))
 
-ggplot(steps_by_day_nona, aes(x = steps)) + geom_histogram() + xlab("Total steps per day") + ylab("Count of days")
+hist2 <- ggplot(steps_by_day_nona, aes(x = steps)) + geom_histogram() + xlab("Total steps per day") + ylab("Count of days")
+
+hist2
 ```
 
 mean and median stems per day   
@@ -125,5 +131,7 @@ by_interval2 <- group_by(activity2, interval, weekend)
 steps_by_interval2 <- summarize(by_interval2,
     steps = mean(steps, na.rm=TRUE))
 
-ggplot(steps_by_interval2, aes(y = steps, x = interval)) + geom_line() + xlab("5 min interval") + ylab("Average steps") + facet_grid(weekend ~ .)
+daily2 <- ggplot(steps_by_interval2, aes(y = steps, x = interval)) + geom_line() + xlab("5 min interval") + ylab("Average steps") + facet_grid(weekend ~ .)
+
+daily2
 ```

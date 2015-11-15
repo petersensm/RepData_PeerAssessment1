@@ -67,7 +67,9 @@ by_day <- group_by(activity, date)
 steps_by_day <- summarize(by_day,
     steps = sum(steps))
 
-ggplot(steps_by_day, aes(x = steps)) + geom_histogram() + xlab("Total steps per day") + ylab("Count of days")
+hist <- ggplot(steps_by_day, aes(x = steps)) + geom_histogram() + xlab("Total steps per day") + ylab("Count of days")
+
+hist
 ```
 
 ```
@@ -104,7 +106,9 @@ by_interval <- group_by(activity, interval)
 steps_by_interval <- summarize(by_interval,
     steps = mean(steps, na.rm=TRUE))
 
-ggplot(steps_by_interval, aes(y = steps, x = interval)) + geom_line() + xlab("5 min interval") + ylab("Average steps")
+daily <- ggplot(steps_by_interval, aes(y = steps, x = interval)) + geom_line() + xlab("5 min interval") + ylab("Average steps")
+
+daily
 ```
 
 ![](PA1_template_files/figure-html/daily_pattern-1.png) 
@@ -180,7 +184,9 @@ by_day_nona <- group_by(activity2, date)
 steps_by_day_nona <- summarize(by_day_nona,
     steps = sum(steps))
 
-ggplot(steps_by_day_nona, aes(x = steps)) + geom_histogram() + xlab("Total steps per day") + ylab("Count of days")
+hist2 <- ggplot(steps_by_day_nona, aes(x = steps)) + geom_histogram() + xlab("Total steps per day") + ylab("Count of days")
+
+hist2
 ```
 
 ```
@@ -224,7 +230,9 @@ by_interval2 <- group_by(activity2, interval, weekend)
 steps_by_interval2 <- summarize(by_interval2,
     steps = mean(steps, na.rm=TRUE))
 
-ggplot(steps_by_interval2, aes(y = steps, x = interval)) + geom_line() + xlab("5 min interval") + ylab("Average steps") + facet_grid(weekend ~ .)
+daily2 <- ggplot(steps_by_interval2, aes(y = steps, x = interval)) + geom_line() + xlab("5 min interval") + ylab("Average steps") + facet_grid(weekend ~ .)
+
+daily2
 ```
 
 ![](PA1_template_files/figure-html/weekday_end_pattern-1.png) 
